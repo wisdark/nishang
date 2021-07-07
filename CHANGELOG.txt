@@ -1,3 +1,41 @@
+0.8.9
+- Added Add-ConstrainedDelegationBackdoor to the ActiveDirectory directory.
+0.8.2
+- Restored PowerShell only payloads dependency for Out-SCT
+- Out-Excel and Out-Word handle payloads a bit more intelligently now. 
+- Invoke-BruteForce can now detect SQL Server 2017 on success.
+0.8.1
+- Removed PowerShell only payloads dependency from Out-SCT
+0.8.0
+- Removed PowerShell only payloads dependency from Invoke-JSRatRegsvr and Invoke-JSRatRundll
+0.7.7
+- Removed Get-Unconstrained from the ActiveDirectory directory.
+- Added Set-DCShadowPermissions to the ActiveDirectory directory.
+0.7.6
+- Added Set-RemotePSRemoting to the Backdoors directory.
+- Added DDE techqniue to Out-Excel.
+0.7.5
+- Added Set-RemoteWMI.ps1 to Backdoors directory.
+- Added download-exec persistence to Add-Persistence.
+- Bug fixes in Add-Persistence
+- Invoke-SessionGopher no longer needs password as a parameter.
+- Minor changes in help section of Invoke-PowerShellWMI
+- Modified Invoke-PowerShellWMI to allow execution of commands and scripts non-interactively.
+- Bug fixes in Out-Word.
+- Added a bit of DDE payload hiding in Out-Word.
+- Added DDE payloads to Out-Word.
+0.7.4
+- Added Invoke-SessionGopher.ps1 by Brandon Arvanaghi with some usability modifications to the Gather directory. 
+0.7.3
+- Updated mimikatz dll in Invoke-Mimikatz.ps1 to 2.1.1
+- Updated Invoke-AmsiBypass to add another AMSI bypass by Matt Graeber. 
+- Bug fixes in Copy-VSS and Out-SCT. 
+- Minor improvements to Out-ShortCut. 
+ 
+0.7.2
+- Added Invoke-PowershellTcpOnelineBind to the Shells directory. 
+0.7.1
+- Added Invoke-AmsiBypass to the Bypass directory.
 0.7.0
 - Added Invoke-SSIDExfil to the Gather directory. 
 - Gupt-Backdoor can now receive commands from SSID names on targets having PowerShellv3 and above.

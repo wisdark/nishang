@@ -1,5 +1,3 @@
-#Requires -Version 3
-
 function Get-WebCredentials
 {
 <#
@@ -24,3 +22,4 @@ $ClassHolder = [Windows.Security.Credentials.PasswordVault,Windows.Security.Cred
 $VaultObj = new-object Windows.Security.Credentials.PasswordVault
 $VaultObj.RetrieveAll() | foreach { $_.RetrievePassword(); $_ }
 }
+

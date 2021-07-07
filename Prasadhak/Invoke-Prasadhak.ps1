@@ -1,5 +1,3 @@
-#Requires -Version 3
-
 function Invoke-Prasadhak
 {
 
@@ -116,4 +114,6 @@ The word Invoke-Prasadhak means purifier in Sanskrit language.
         $count++
     }
 }
+
+
 

